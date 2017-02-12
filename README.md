@@ -5,7 +5,7 @@
 * [Installation & loading](#2---installation--loading)
 * [Usage](#3---usage)
 	* [Importing in component](#31---importing-in-component)
-	* [Events](#32---public-methods--events)
+	* [Public methods & events](#32---public-methods--events)
 	* [Options](#33---options)
 * [Toolbar](#3---toolbar)
 	
