@@ -1,3 +1,5 @@
+![Ionic 2 Digit Keyboard banner](https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png)
+
 #Ionic 2 Digit Keyboard
 
 ![](http://icons.iconarchive.com/icons/yusuke-kamiyamane/fugue/16/information-button-icon.png) Try it now using [Ionic View](http://view.ionic.io/) with the following id: **c53c6c00**.
