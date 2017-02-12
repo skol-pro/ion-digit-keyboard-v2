@@ -30,6 +30,8 @@ www/
 $RECYCLE.BIN/
 screenshots/
 icon.jpg
+banner.psd
+banner.png
 
 .DS_Store
 Thumbs.db

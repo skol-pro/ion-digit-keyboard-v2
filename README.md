@@ -1,5 +1,6 @@
 #Ionic 2 Digit Keyboard
 
+![](http://icons.iconarchive.com/icons/yusuke-kamiyamane/fugue/16/information-button-icon.png) Try it now using [Ionic View](http://view.ionic.io/) with the following id: **c53c6c00**.
 
 * [Info](#1---info)
 * [Installation & loading](#2---installation--loading)
