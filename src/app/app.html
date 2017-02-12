@@ -36,7 +36,7 @@
         </ion-buttons>
         <ion-buttons end>
             <button ion-button solid *ngIf="">Next</button>
-            <button ion-button solid (click)="hideKeyboard()">Done</button>
+            <button ion-button solid *ngIf="" (click)="hideKeyboard()">Done</button>
         </ion-buttons>
     </ion-toolbar>
 </ion-digit-keyboard>

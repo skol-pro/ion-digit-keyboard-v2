@@ -33,7 +33,7 @@ export class MyApp {
         showLetters: true,
         swipeToHide: true,
         // Available themes: IonDigitKeyboard.themes
-        theme: 'ionic'
+        theme: 'messenger'
     };
 
     constructor(public platform: Platform) {

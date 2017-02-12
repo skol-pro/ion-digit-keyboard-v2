@@ -120,7 +120,7 @@ Keyboard options (`IonDigitKeyboardOptions` interface):
 - **roundButtons** *(boolean)*: If set to true, it turns the buttons to rounded buttons. It won't looks good for most of the themes.
 - **showLetters** *(boolean)*: If set to true, it will display letters under buttons number.
 - **swipeToHide** *(boolean)*: If set to true, swiping the keyboard from top to bottom will hide it.
-- **theme** *(string)*: Keyboard visual theme. Accessible from `IonDigitKeyboard.themes`.
+- **theme** *(string)*: Keyboard visual theme. Available themes: `'light'`, `'dark'`, `'ionic'`, `'opaque-black'`, `'opaque-white'`, `'dusk'`, `'nepal'`, `'alihossein'`, `'messenger'`. Also accessible from `IonDigitKeyboard.themes`.
 You can put all of them on the `ion-digit-keyboard` component:
 ```html
 <ion-digit-keyboard
