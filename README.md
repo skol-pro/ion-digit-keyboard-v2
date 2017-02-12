@@ -103,7 +103,6 @@ IonDigitKeyboard.onShow.subscribe(() => {
     // Do something
 });
 ```
-__**CAUTION:**__ Do not try to put those 2 last inline like `<ion-digit-keyboard (onShow)="onKeyboardShow()"></ion-digit-keyboard>`, __**it won't work**__ (for now at least) !
 
 ####3.3 - Options
 First, I recommend you to import `IonDigitKeyboardOptions`.
