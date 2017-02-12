@@ -1,4 +1,4 @@
-![Ionic 2 Digit Keyboard banner](https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png)
+->![Ionic 2 Digit Keyboard banner](https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png)<-
 
 #Ionic 2 Digit Keyboard
 
