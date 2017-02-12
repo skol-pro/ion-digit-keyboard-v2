@@ -1,4 +1,4 @@
-<div style="text-align: center;"><img src="https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png" style="width: 100%" /></div>
+![Ionic 2 Digit Keyboard banner](https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png){: height="auto" width="100%"}
 
 #Ionic 2 Digit Keyboard
 
