@@ -1,0 +1,42 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-digit-keyboard
+    [align]="keyboardSettings.align"
+    [width]="keyboardSettings.width"
+    [visible]="keyboardSettings.visible"
+    [leftActionOptions]="keyboardSettings.leftActionOptions"
+    [rightActionOptions]="keyboardSettings.rightActionOptions"
+    [roundButtons]="keyboardSettings.roundButtons"
+    [showLetters]="keyboardSettings.showLetters"
+    [swipeToHide]="keyboardSettings.swipeToHide"
+    [theme]="keyboardSettings.theme"
+    (numberClick)="numberClick($event)"
+>
+    <ion-toolbar no-border-bottom>
+        <ion-buttons start>
+            <button ion-button (click)="hideKeyboard()">Cancel</button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button solid *ngIf="">Next</button>
+            <button ion-button solid (click)="hideKeyboard()">Done</button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-digit-keyboard>

@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Login</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item [class.active]="focus === 'userId'" (touchend)="setFocus('userId')">
+            <ion-label stacked>User ID</ion-label>
+            <ion-input type="text" disabled [ngModel]="userId"></ion-input>
+        </ion-item>
+
+        <ion-item [class.active]="focus === 'userPassword'" (touchend)="setFocus('userPassword')">
+            <ion-label stacked>Password</ion-label>
+            <ion-input type="password" disabled [ngModel]="userPassword"></ion-input>
+        </ion-item>
+    </ion-list>
+</ion-content>

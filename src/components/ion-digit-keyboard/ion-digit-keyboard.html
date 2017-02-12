@@ -1,0 +1,93 @@
+<div (window:resize)="onWindowResize($event)" class="keyboard-{{theme}} align-{{align}} {{roundButtons ? 'round-buttons' : ''}} {{showLetters == false ? 'no-letters' : ''}}" [style.width]="width">
+	<ng-content select="ion-toolbar"></ng-content>
+    <div class="digit-keyboard-row" [style.zoom]="zoom">
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 1)">
+				<div class="digit-keyboard-key-number">1
+					<div class="digit-keyboard-key-letters"></div>
+				</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 2)">
+				<div class="digit-keyboard-key-number">2
+					<div class="digit-keyboard-key-letters">ABC</div>
+				</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 3)">
+				<div class="digit-keyboard-key-number">3
+					<div class="digit-keyboard-key-letters">DEF</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="digit-keyboard-row" [style.zoom]="zoom">
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 4)">
+				<div class="digit-keyboard-key-number">4
+					<div class="digit-keyboard-key-letters">GHI</div>
+				</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 5)">
+				<div class="digit-keyboard-key-number">5
+					<div class="digit-keyboard-key-letters">JKL</div>
+				</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 6)">
+				<div class="digit-keyboard-key-number">6
+					<div class="digit-keyboard-key-letters">MNO</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="digit-keyboard-row" [style.zoom]="zoom">
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 7)">
+				<div class="digit-keyboard-key-number">7
+					<div class="digit-keyboard-key-letters">PQRS</div>
+				</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 8)">
+				<div class="digit-keyboard-key-number">8
+					<div class="digit-keyboard-key-letters">TUV</div>
+				</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 9)">
+				<div class="digit-keyboard-key-number">9
+					<div class="digit-keyboard-key-letters">WXYZ</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="digit-keyboard-row" [style.zoom]="zoom">
+		<div class="digit-keyboard-key-wrapper" [style.visibility]="leftAction.visibility">
+			<div class="digit-keyboard-key action-key" (touchend)="btnClick($event, 'left')">
+				<div class="digit-keyboard-key-action" [style.font-size]="leftAction.fontSize">
+                    <ion-icon [name]="leftAction.iconName"></ion-icon>
+                </div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper">
+			<div class="digit-keyboard-key" (touchend)="btnClick($event, 0)">
+				<div class="digit-keyboard-key-number" style="margin-top: -0.30em;">0</div>
+			</div>
+		</div>
+		<div class="digit-keyboard-key-wrapper" [style.visibility]="rightAction.visibility">
+			<div class="digit-keyboard-key action-key" (touchend)="btnClick($event, 'right')">
+				<div class="digit-keyboard-key-action" [style.font-size]="rightAction.fontSize">
+                    <ion-icon [name]="rightAction.iconName"></ion-icon>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>

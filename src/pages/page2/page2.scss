@@ -1,0 +1,11 @@
+page-page2 {
+    ion-item {
+        border-right-color: #fff !important;
+        transition: border-width 250ms, background-color 1s !important;
+
+        &.active {
+            border-right: 10px solid #3782fe !important;
+            background-color: rgba(#3782fe, 0.05) !important;
+        }
+    }
+}

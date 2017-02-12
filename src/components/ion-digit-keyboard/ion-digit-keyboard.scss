@@ -1,0 +1,421 @@
+
+$dk-bg-color: transparent;
+$dk-btn-border-size: 1px;
+$dk-btn-height: 60px;
+$dk-btn-font-size: 24px;
+
+// Private variables (mostly default)
+$dk-btn-bg-color: #ccc;
+$dk-btn-border-color: #333;
+$dk-btn-text-color: #333;
+$dk-btn-action-color: #333;
+$dk-btn-click-bg-color: #ddd;
+$dk-btn-click-text-color: #444;
+
+$light: #fff !default;
+$dark: #444 !default;
+$opaque-black: rgba(#000, 0.75);
+$opaque-white: rgba(#fff, 0.75);
+
+ion-digit-keyboard { }
+
+ion-digit-keyboard {
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	background: $dk-bg-color;
+	font-size: $dk-btn-font-size;
+	z-index: 5000;
+    transition: transform linear 150ms;
+    transform: translate3d(0,100%,0);
+
+    &.visible {
+        transform: translate3d(0,0,0);
+    }
+	
+	* {
+		box-sizing: border-box;
+	}
+	
+    > div {
+        // Row
+        .digit-keyboard-row {
+            display: flex;
+            flex-direction: row;
+            border-bottom: $dk-btn-border-size solid $dk-btn-border-color;
+            
+            // Wrapper
+            .digit-keyboard-key-wrapper {
+                flex: 1;
+                text-align: center;
+                position: relative;
+                height: $dk-btn-height;
+                
+                // Key
+                .digit-keyboard-key {
+                    display: block;
+                    margin: 0 auto;
+                    position: absolute;
+                    left: 0; top: 0; right: 0; bottom: 0;
+                    border-right: $dk-btn-border-size solid $dk-btn-border-color;
+                    border-left: $dk-btn-border-size solid $dk-btn-border-color;
+                    //background: $dk-btn-bg-color;
+                    //color: $dk-btn-text-color;
+                    line-height: $dk-btn-height;
+                    
+                    -webkit-transition: all 150ms ease-out;
+                    -moz-transition: all 150ms ease-out;
+                    -o-transition: all 150ms ease-out;
+                    -ms-transition: all 150ms ease-out;
+                    transition: all 150ms ease-out;
+                    
+                    // Number
+                    .digit-keyboard-key-number {
+                        font-size: 1em;
+                        vertical-align: middle;
+                        display: inline-block;
+                        line-height: normal;
+                        text-align: center;
+                        margin-top: -0.40em;
+                    
+                        // Letters
+                        .digit-keyboard-key-letters {
+                            font-size: (($dk-btn-font-size*40)/100);
+                            line-height: (($dk-btn-font-size*40)/100);
+                            height: (($dk-btn-font-size*40)/100);
+                            margin-top: -0.25em;
+
+                            &.hidden {
+                                visibility: hidden;
+                            }
+                        }
+                    }
+                    
+                    // Action
+                    .digit-keyboard-key-action {
+                        position: absolute;
+                        left: 0; top: 0; right: 0; bottom: 0;
+                        line-height: $dk-btn-height;
+                        font-size: $dk-btn-font-size;
+                    }
+                }
+                
+                &.hidden {
+                    visibility: hidden;
+                }
+                    
+                &:first-child .digit-keyboard-key {
+                    border-right: none;
+                }
+                
+                &:last-child .digit-keyboard-key {
+                    border-left: none;
+                    
+                }
+            }
+            
+            &:first-child {
+                border-top: $dk-btn-border-size solid $dk-btn-border-color;
+            }
+            
+            &:last-child {
+                border: none;
+                
+                .digit-keyboard-key-wrapper {
+                    .digit-keyboard-key {
+                        border-bottom: $dk-btn-border-size solid $dk-btn-border-color;
+                    }
+                }
+            }
+        }
+        
+        // Align center
+        &.align-center {
+            margin: 0 auto;
+        }
+        
+        // Align left
+        &.align-left {
+            margin-right: auto;
+        }
+        
+        // Align right
+        &.align-right {
+            margin-left: auto;
+        }
+        
+        // No letters
+        &.no-letters {
+            .digit-keyboard-row {
+                .digit-keyboard-key-wrapper {
+                    .digit-keyboard-key {
+                        .digit-keyboard-key-number {
+                            margin-top: -0.30em;
+
+                            .digit-keyboard-key-letters {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Round buttons
+        &.round-buttons {
+            .digit-keyboard-row {
+                border: none;
+                
+                .digit-keyboard-key-wrapper {
+                    margin: 10px 0 0 0;
+                    
+                    .digit-keyboard-key {
+                        width: $dk-btn-height;
+                        -webkit-border-radius: 100%;
+                        -moz-border-radius: 100%;
+                        border-radius: 100%;
+                        border: $dk-btn-border-size solid $dk-btn-border-color;
+
+                        &:active {
+                            transform: scale3d(0.95, 0.95, 1);
+                        }
+                    }
+                }
+                    
+                &:last-child .digit-keyboard-key-wrapper {
+                    margin-bottom: 10px;
+                }
+            }
+            
+            &.no-letters {		
+                .digit-keyboard-row {
+                    .digit-keyboard-key-wrapper {
+                        .digit-keyboard-key {
+                            .digit-keyboard-key-number {
+                                height: (($dk-btn-height*96)/100);
+                                line-height: (($dk-btn-height*96)/100);
+                            }
+                        }
+                    }
+                }
+            }
+        }	
+        
+        /*
+        * Keyboard color styles
+        */
+        &.keyboard-light {
+            [class^="digit-keyboard"] { border-color: darken($light, 10%) !important; }
+            .digit-keyboard-key {
+                background: $light;
+                color: #444;
+                    
+                &:active {
+                    background: darken($light, 10%);
+                }
+            }
+        }
+        
+        &.keyboard-dark {
+            [class^="digit-keyboard"] { border-color: darken($dark, 10%) !important; }
+            .digit-keyboard-key {
+                background: $dark;
+                color: #fff;
+                    
+                &:active {
+                    background: lighten($dark, 10%);
+                }
+            }
+        }
+        
+        &.keyboard-ionic {
+            [class^="digit-keyboard"] { border: none !important; }        
+            
+            background: #3782fe;     
+
+            .digit-keyboard-key {
+                color: #fff;
+                background: rgba(#fff, 0.1);
+                margin: 1px !important;
+
+                &.action-key {
+                    background: transparent !important;
+                }
+
+                .digit-keyboard-key-action {
+                    -webkit-transition: color 150ms ease-out;
+                    -moz-transition: color 150ms ease-out;
+                    -o-transition: color 150ms ease-out;
+                    -ms-transition: color 150ms ease-out;
+                    transition: color 150ms ease-out;
+                }
+                
+                &:active {
+                    background: rgba(#fff, 0.25);
+                    transform: scale3d(0.95, 0.95, 1);
+
+                    .digit-keyboard-key-action {
+                        color: rgba(#fff, 0.5);
+                    }
+                }
+            }
+        }
+        
+        &.keyboard-opaque-black {
+            [class^="digit-keyboard"] { border-color: $opaque-black !important; }
+            .digit-keyboard-key {
+                background: rgba(#000, 0.15);
+                color: $opaque-black;
+                
+                &:active {
+                    background: rgba(#000, 0.25);
+                }
+            }
+        }
+        
+        &.keyboard-opaque-white {
+            [class^="digit-keyboard"] { border-color: $opaque-white !important; }
+            .digit-keyboard-key {
+                background: rgba(#fff, 0.10);
+                color: $opaque-white;
+                
+                &:active {
+                    background: rgba(#fff, 0.25);
+                }
+            }
+        }
+        
+        &.keyboard-dusk {
+            [class^="digit-keyboard"] { border: none !important; }
+
+            background: #19547b;
+            background: -moz-linear-gradient(45deg,  #19547b 0%, #ffd89b 98%);
+            background: -webkit-linear-gradient(45deg,  #19547b 0%,#ffd89b 98%);
+            background: linear-gradient(45deg,  #19547b 0%,#ffd89b 98%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#19547b', endColorstr='#ffd89b',GradientType=1 );
+
+            .digit-keyboard-key {
+                color: $opaque-white;
+
+                .digit-keyboard-key-action {
+                    background: rgba(#000, 0.1);
+                }
+                
+                &:active {
+                    color: #fff;
+                    background: rgba(#000, 0.05);
+                    transform: scale3d(0.95, 0.95, 1);
+                }
+            }
+        }
+        
+        &.keyboard-nepal {
+            [class^="digit-keyboard"] { border: none !important; }
+
+            background: #de6161;
+            background: -moz-linear-gradient(45deg,  #de6161 0%, #2657eb 98%);
+            background: -webkit-linear-gradient(45deg,  #de6161 0%,#2657eb 98%);
+            background: linear-gradient(45deg,  #de6161 0%,#2657eb 98%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de6161', endColorstr='#2657eb',GradientType=1 );      
+
+            .digit-keyboard-key {
+                color: $opaque-white;
+
+                .digit-keyboard-key-action {
+                    background: rgba(#fff, 0.1);
+                }
+                
+                &:active {
+                    color: #fff;
+                    background: rgba(#fff, 0.05);
+                    transform: scale3d(0.95, 0.95, 1);
+
+                    .digit-keyboard-key-action {
+                        background: rgba(#fff, 0.12);
+                    }
+                }
+            }
+        }
+        
+        &.keyboard-alihossein {
+            [class^="digit-keyboard"] { border-color: rgba(#fff, 0.25) !important; }
+            
+            background: #E8CC00;
+            background: -moz-linear-gradient(45deg,  #E8CC00 0%, #db36a4 98%);
+            background: -webkit-linear-gradient(45deg,  #E8CC00 0%,#db36a4 98%);
+            background: linear-gradient(45deg,  #E8CC00 0%,#db36a4 98%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E8CC00', endColorstr='#db36a4',GradientType=1 );      
+
+            .digit-keyboard-key {
+                color: #fff;
+
+                .digit-keyboard-key-action {
+                    background: rgba(#fff, 0.1);
+                }
+                
+                &:active {
+                    background: rgba(#fff, 0.15);
+                }
+            }
+        }
+        
+        &.keyboard-messenger {
+            [class^="digit-keyboard"] { border: none !important; }        
+            
+            background: #00c6ff;
+            background: -moz-linear-gradient(45deg,  #00c6ff 0%, #0072ff 98%);
+            background: -webkit-linear-gradient(45deg,  #00c6ff 0%,#0072ff 98%);
+            background: linear-gradient(45deg,  #00c6ff 0%,#0072ff 98%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c6ff', endColorstr='#0072ff',GradientType=1 );      
+
+            .digit-keyboard-key {
+                color: #fff;
+                background: rgba(#fff, 0.1);
+                margin: 1px !important;
+
+                &.action-key {
+                    background: transparent !important;
+                }
+
+                .digit-keyboard-key-action {
+                    -webkit-transition: color 150ms ease-out;
+                    -moz-transition: color 150ms ease-out;
+                    -o-transition: color 150ms ease-out;
+                    -ms-transition: color 150ms ease-out;
+                    transition: color 150ms ease-out;
+                }
+                
+                &:active {
+                    background: rgba(#fff, 0.25);
+                    transform: scale3d(0.95, 0.95, 1);
+
+                    .digit-keyboard-key-action {
+                        color: rgba(#fff, 0.5);
+                    }
+                }
+            }
+        }
+
+        // Animation: slide-up
+        /*&.animation-slide {
+            -webkit-transition: transform linear 150ms;
+            transition: transform linear 150ms;
+            transform: translate3d(0,0,0);
+        }
+
+        &.animation-slide.hidden {
+            transform: translate3d(0,100%,0);
+        }*/
+        
+        // Animation: pop
+        /*&.animation-pop {
+            -webkit-transition: transform linear 150ms;
+            transition: transform linear 150ms;
+            transform: scale3d(1, 1, 1);
+        }
+
+        &.animation-pop.hidden {
+            transform: scale3d(0, 0, 1);
+        }*/
+    }
+}
+
