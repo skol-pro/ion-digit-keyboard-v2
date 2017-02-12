@@ -8,6 +8,7 @@
 	* [Public methods & events](#32---public-methods--events)
 	* [Options](#33---options)
 * [Toolbar](#3---toolbar)
+* [Example / demo](#3---example--demo)
 	
 ##1 - Info
 Version: 2.0<br>
@@ -178,4 +179,7 @@ You can add an `ion-toolbar` inside the `ion-digit-keyboard` component:
     </ion-toolbar>
 </ion-digit-keyboard>
 ```
+
+##4 - Example / demo
+Simply clone this repo, run `npm install` and `ionic serve`.
 
