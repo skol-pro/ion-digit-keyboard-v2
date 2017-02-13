@@ -116,7 +116,7 @@ IonDigitKeyboard.onShow.subscribe(() => {
 ```
 
 ####3.3 - Options
-First, I recommend you to import `IonDigitKeyboardOptions`.
+First, I recommend you to import the `IonDigitKeyboardOptions` interface.
 ```typescript
 // app.component.ts
 import { IonDigitKeyboard, IonDigitKeyboardOptions } from '../components/ion-digit-keyboard/ion-digit-keyboard';
@@ -167,7 +167,7 @@ keyboardSettings: IonDigitKeyboardOptions = {
 }
 ```
 
-Actions options (`ActionOptions` interface):
+Action options (`ActionOptions` interface):
 - **hidden** *(boolean)*: Display the action button or not.
 - **fontSize** *(string)*: Optional icon font size adjustement.
 - **iconName** *(string)*: The action Ionic icon name to display.
