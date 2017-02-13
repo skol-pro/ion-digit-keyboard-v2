@@ -72,7 +72,7 @@ onKeyboardButtonClick(key: number) {
     console.log(key);
 }
 ```
-You could also use a subscriber like this:
+You could also use the `onClick` subscriber like this:
 ```typescript
 IonDigitKeyboard.onClick.subscribe((key) => {
     // Log the pressed key
