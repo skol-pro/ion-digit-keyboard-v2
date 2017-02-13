@@ -91,7 +91,8 @@ And here are the available events:
 - **leftActionClick**: Left action clicked
 - **rightActionClick**: Left action clicked
 - **numberClick**: Number key clicked
-Example for the `buttonClick`:
+<br>
+Example using `buttonClick`:
 ```html
 <ion-digit-keyboard (buttonClick)="onKeyboardButtonClick()"></ion-digit-keyboard>
 ```
