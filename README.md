@@ -23,7 +23,7 @@ Donations: You're really welcome to donate, any amount at any time :-)
 
 ##2 - Installation & loading
 Copy the `ion-digit-keyboard` component folder into your project (under **src/components/** for example). Import the component in your **app.module.ts**, add it to the `declarations` and `entryComponents` arrays.
-```javascript
+```typescript
 // app.module.ts
 import { IonDigitKeyboard } from '../components/ion-digit-keyboard/ion-digit-keyboard';
 // ...
@@ -51,7 +51,7 @@ export class AppModule { }
 ####3.1 - Importing in component
 You can now import the keyboard wherever you want, however I suggest you to insert it in your **app.component.ts** to have access to the it globaly (and destroy it later if needed).
 Add it in your application html template, under `ion-nav` for example (in most case you'll have one).
-```javascript
+```typescript
 // app.component.ts
 import { IonDigitKeyboard } from '../components/ion-digit-keyboard/ion-digit-keyboard';
 ```
@@ -62,16 +62,22 @@ import { IonDigitKeyboard } from '../components/ion-digit-keyboard/ion-digit-key
 <ion-digit-keyboard></ion-digit-keyboard>
 ```
 Don't forget to import **ion-digit-keyboard.scss** in **app.scss**.<br><br>
-With this minimalist configuration, you can already use the keyboard, just subscribe to the `onClick` event !
-```javascript
-// app.component.ts
-constructor(platform: Platform) {
-    // ...
-    IonDigitKeyboard.onClick.subscribe((key) => {
-        // Log the pressed key
-        console.log(key);
-    });
+With this minimalist configuration, you can already use the keyboard, just add the `buttonClick` event !
+```html
+<ion-digit-keyboard (buttonClick)="onKeyboardButtonClick()"></ion-digit-keyboard>
+```
+```typescript
+onKeyboardButtonClick(key: number) {
+    // Log the pressed key
+    console.log(key);
 }
+```
+You could also use a subscriber like this:
+```typescript
+IonDigitKeyboard.onClick.subscribe((key) => {
+    // Log the pressed key
+    console.log(key);
+});
 ```
 
 ####3.2 - Public methods & events
@@ -89,7 +95,7 @@ Example for the `buttonClick`:
 ```html
 <ion-digit-keyboard (buttonClick)="onKeyboardButtonClick()"></ion-digit-keyboard>
 ```
-```javascript
+```typescript
 // app.component.ts
 public onKeyboardButtonClick(key: any) {
     // Key can be a number (0-9) or a string ('left' or 'right')
@@ -99,7 +105,7 @@ There is also 3 available subscribers:
 - **onClick**: Same as `buttonClick` event.
 - **onShow**: Use this **method** to register a callback when the keyboard is showing up (after the animation)
 - **onHide**: Use this **method** to register a callback when the keyboard is getting hidden (also after the animation)
-```javascript
+```typescript
 IonDigitKeyboard.onClick.subscribe((key: any) => {
     // Do something
 });
@@ -110,7 +116,7 @@ IonDigitKeyboard.onShow.subscribe(() => {
 
 ####3.3 - Options
 First, I recommend you to import `IonDigitKeyboardOptions`.
-```javascript
+```typescript
 // app.component.ts
 import { IonDigitKeyboard, IonDigitKeyboardOptions } from '../components/ion-digit-keyboard/ion-digit-keyboard';
 ```
@@ -140,7 +146,7 @@ You can put all of them on the `ion-digit-keyboard` component:
 >
 </ion-digit-keyboard>
 ```
-```javascript
+```typescript
 keyboardSettings: IonDigitKeyboardOptions = {
     align: 'center',
     width: '',
