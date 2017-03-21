@@ -1,6 +1,6 @@
-<p align="center">![Ionic 2 Digit Keyboard banner](https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png)<p>
+![Ionic 2 Digit Keyboard banner](https://s3.amazonaws.com/ionic-marketplace/ionic-2-digital-keyboard/banner.png)
 
-#Ionic 2 Digit Keyboard
+# Ionic 2 Digit Keyboard
 
 ![](http://icons.iconarchive.com/icons/yusuke-kamiyamane/fugue/16/information-button-icon.png) Try it now using [Ionic View](http://view.ionic.io/) with the following id: **c53c6c00**.
 
@@ -13,7 +13,7 @@
 * [Toolbar](#4---toolbar)
 * [Example / demo](#5---example--demo)
 	
-##1 - Info
+## 1 - Info
 Version: 2.0<br>
 Author: Skol (Vincent Letellier)<br>
 Email: skol.pro@gmail.com<br>
@@ -21,7 +21,7 @@ Donations: You're really welcome to donate, any amount at any time :-)
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ADEZD3EL9DN5Q&lc=US&item_name=Ionic%20Digital%20Keyboard&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
-##2 - Installation & loading
+## 2 - Installation & loading
 Copy the `ion-digit-keyboard` component folder into your project (under **src/components/** for example). Import the component in your **app.module.ts**, add it to the `declarations` and `entryComponents` arrays.
 ```typescript
 // app.module.ts
@@ -47,8 +47,8 @@ import { IonDigitKeyboard } from '../components/ion-digit-keyboard/ion-digit-key
 export class AppModule { }
 ```
 
-##3 - Usage
-####3.1 - Importing in component
+## 3 - Usage
+#### 3.1 - Importing in component
 You can now import the keyboard wherever you want, however I suggest you to insert it in your **app.component.ts** to have access to the it globaly (and destroy it later if needed).
 Add it in your application html template, under `ion-nav` for example (in most case you'll have one).
 ```typescript
@@ -80,7 +80,7 @@ IonDigitKeyboard.onClick.subscribe((key) => {
 });
 ```
 
-####3.2 - Public methods & events
+#### 3.2 - Public methods & events
 Here are the public methods:
 - **show** *(function)*: Show the keyboard. The optional callback will be called after transition ends.
 - **hide** *(function)*: Hide the keyboard. The optional callback will be called after transition ends.
@@ -91,7 +91,8 @@ And here are the available events:
 - **leftActionClick**: Left action clicked
 - **rightActionClick**: Left action clicked
 - **numberClick**: Number key clicked
-<br>
+
+
 Example using `buttonClick`:
 ```html
 <ion-digit-keyboard (buttonClick)="onKeyboardButtonClick()"></ion-digit-keyboard>
@@ -115,7 +116,7 @@ IonDigitKeyboard.onShow.subscribe(() => {
 });
 ```
 
-####3.3 - Options
+#### 3.3 - Options
 First, I recommend you to import the `IonDigitKeyboardOptions` interface.
 ```typescript
 // app.component.ts
@@ -174,7 +175,7 @@ Action options (`ActionOptions` interface):
 
 As you probably already understood, **none of those otpions are required** !
 
-##4 - Toolbar
+## 4 - Toolbar
 You can add an `ion-toolbar` inside the `ion-digit-keyboard` component:
 ```html
 <ion-digit-keyboard>
@@ -190,6 +191,6 @@ You can add an `ion-toolbar` inside the `ion-digit-keyboard` component:
 </ion-digit-keyboard>
 ```
 
-##5 - Example / demo
+## 5 - Example / demo
 Simply clone this repo, run `npm install` and `ionic serve`.
 

@@ -225,7 +225,6 @@ export class IonDigitKeyboard {
      * @memberOf IonDigitKeyboard
      */
     private adjustZoomLevel(): void {
-        // @TODO must be call on resize
         let referenceHeight = 568; // iPhone 5
         let currentHeight = window.screen.height;
         this.zoom = currentHeight / referenceHeight;
