@@ -79,6 +79,7 @@ IonDigitKeyboard.onClick.subscribe((key) => {
     console.log(key);
 });
 ```
+![](http://ficdn.mtbr.com/images/icons/icon4.png) **CAUTION** - In case no event is fired, be sure your browser **Mobile Emulation** is turned **ON**, since the keyboard is using the `touchend` event.
 
 #### 3.2 - Public methods & events
 Here are the public methods:
