@@ -5,13 +5,14 @@
 ![](http://icons.iconarchive.com/icons/yusuke-kamiyamane/fugue/16/information-button-icon.png) Try it now using [Ionic View](http://view.ionic.io/) with the following id: **c53c6c00**.
 
 * [Info](#1---info)
-* [Installation & loading](#2---installation--loading)
-* [Usage](#3---usage)
-	* [Importing in component](#31---importing-in-component)
-	* [Public methods & events](#32---public-methods--events)
-	* [Options](#33---options)
-* [Toolbar](#4---toolbar)
-* [Example / demo](#5---example--demo)
+* [Changelog](#2---changelog)
+* [Installation & loading](#3---installation--loading)
+* [Usage](#4---usage)
+	* [Importing in component](#41---importing-in-component)
+	* [Public methods & events](#42---public-methods--events)
+	* [Options](#43---options)
+* [Toolbar](#5---toolbar)
+* [Example / demo](#6---example--demo)
 	
 ## 1 - Info
 Version: 2.0<br>
@@ -21,7 +22,12 @@ Donations: You're really welcome to donate, any amount at any time :-)
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ADEZD3EL9DN5Q&lc=US&item_name=Ionic%20Digital%20Keyboard&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
-## 2 - Installation & loading
+## 2 - Changelog
+- **April 8, 2017**
+    - Added `text` property on action buttons. This allows having a decimal button for-example.
+    - Updated README with `text` property and example (see [4.3 Options](#43---options)).
+
+## 3 - Installation & loading
 Copy the `ion-digit-keyboard` component folder into your project (under **src/components/** for example). Import the component in your **app.module.ts**, add it to the `declarations` and `entryComponents` arrays.
 ```typescript
 // app.module.ts
@@ -47,8 +53,8 @@ import { IonDigitKeyboard } from '../components/ion-digit-keyboard/ion-digit-key
 export class AppModule { }
 ```
 
-## 3 - Usage
-#### 3.1 - Importing in component
+## 4 - Usage
+#### 4.1 - Importing in component
 You can now import the keyboard wherever you want, however I suggest you to insert it in your **app.component.ts** to have access to the it globaly (and destroy it later if needed).
 Add it in your application html template, under `ion-nav` for example (in most case you'll have one).
 ```typescript
@@ -81,7 +87,7 @@ IonDigitKeyboard.onClick.subscribe((key) => {
 ```
 ![](http://ficdn.mtbr.com/images/icons/icon4.png) **CAUTION** - In case no event is fired, be sure your browser **Mobile Emulation** is turned **ON**, since the keyboard is using the `touchend` event.
 
-#### 3.2 - Public methods & events
+#### 4.2 - Public methods & events
 Here are the public methods:
 - **show** *(function)*: Show the keyboard. The optional callback will be called after transition ends.
 - **hide** *(function)*: Hide the keyboard. The optional callback will be called after transition ends.
@@ -117,7 +123,7 @@ IonDigitKeyboard.onShow.subscribe(() => {
 });
 ```
 
-#### 3.3 - Options
+#### 4.3 - Options
 First, I recommend you to import the `IonDigitKeyboardOptions` interface.
 ```typescript
 // app.component.ts
@@ -159,7 +165,8 @@ keyboardSettings: IonDigitKeyboardOptions = {
         fontSize: '1.4em'
     },
     rightActionOptions: {
-        iconName: 'ios-checkmark-circle-outline',
+        //iconName: 'ios-checkmark-circle-outline',
+        text: '.',
         fontSize: '1.3em'
     },
     roundButtons: false,
@@ -171,12 +178,13 @@ keyboardSettings: IonDigitKeyboardOptions = {
 
 Action options (`ActionOptions` interface):
 - **hidden** *(boolean)*: Display the action button or not.
-- **fontSize** *(string)*: Optional icon font size adjustement.
+- **fontSize** *(string)*: Optional font size adjustement.
 - **iconName** *(string)*: The action Ionic icon name to display.
+- **text** *(string)*: A text to display on the action.
 
-As you probably already understood, **none of those otpions are required** !
+As you probably already understood, **none of those otpions are required** ! Also, setting both `iconName` and `text` properties will only display the icon.
 
-## 4 - Toolbar
+## 5 - Toolbar
 You can add an `ion-toolbar` inside the `ion-digit-keyboard` component:
 ```html
 <ion-digit-keyboard>
@@ -192,6 +200,6 @@ You can add an `ion-toolbar` inside the `ion-digit-keyboard` component:
 </ion-digit-keyboard>
 ```
 
-## 5 - Example / demo
+## 6 - Example / demo
 Simply clone this repo, run `npm install` and `ionic serve`.
 

@@ -26,7 +26,8 @@ export class MyApp {
             fontSize: '1.4em'
         },
         rightActionOptions: {
-            iconName: 'ios-checkmark-circle-outline',
+            //iconName: 'ios-checkmark-circle-outline',
+            text: '.',
             fontSize: '1.3em'
         },
         roundButtons: false,

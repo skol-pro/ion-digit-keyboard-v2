@@ -307,19 +307,24 @@ export interface ActionOptions {
      */
     hidden?: boolean;
     /**
-     * Optional icon font size adjustement.
+     * Optional font size adjustement.
      */
     fontSize?: string;
     /**
-     * The action Ionic icon name to display
+     * The action Ionic icon name to display.
      */
     iconName?: string;
+    /**
+     * A text to display on the action.
+     */
+    text?: string;
 }
 
 interface ActionPrivateOptions {
     visibility: string;
     fontSize?: string;
     iconName?: string;
+    text?: string;
 }
 
 export interface IonDigitKeyboardOptions {
