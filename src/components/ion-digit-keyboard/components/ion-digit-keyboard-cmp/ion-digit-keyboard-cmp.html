@@ -73,7 +73,7 @@
 		<div class="digit-keyboard-key-wrapper" [style.visibility]="leftAction.visibility">
 			<div class="digit-keyboard-key action-key" (touchend)="btnClick($event, 'left')">
 				<div class="digit-keyboard-key-action" [style.font-size]="leftAction.fontSize">
-                    <ion-icon *ngIf="leftAction.iconName" [name]="leftAction.iconName"></ion-icon>
+                    <!--<ion-icon *ngIf="leftAction.iconName" [name]="leftAction.iconName"></ion-icon>-->
                     <div *ngIf="!leftAction.iconName && leftAction.text">{{leftAction.text}}</div>
                 </div>
 			</div>
@@ -86,7 +86,7 @@
 		<div class="digit-keyboard-key-wrapper" [style.visibility]="rightAction.visibility">
 			<div class="digit-keyboard-key action-key" (touchend)="btnClick($event, 'right')">
 				<div class="digit-keyboard-key-action" [style.font-size]="rightAction.fontSize">
-                    <ion-icon *ngIf="rightAction.iconName" [name]="rightAction.iconName"></ion-icon>
+                    <!--<ion-icon *ngIf="rightAction.iconName" [name]="rightAction.iconName"></ion-icon>-->
                     <div *ngIf="!rightAction.iconName && rightAction.text">{{rightAction.text}}</div>
                 </div>
 			</div>

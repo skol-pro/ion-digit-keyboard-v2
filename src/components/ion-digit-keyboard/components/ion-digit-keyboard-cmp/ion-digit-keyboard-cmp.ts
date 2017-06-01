@@ -1,23 +1,14 @@
 import { Component, ElementRef, Input, Output, EventEmitter, Renderer, HostBinding } from '@angular/core';
 import { Gesture } from 'ionic-angular/gestures/gesture';
 import { Subject } from 'rxjs/Rx';
+import { ActionOptions } from '../../interfaces/action.interface';
 declare var Hammer: any;
-
-/**
- * @name IonDigitKeyboard
- * @description A digital keyboard for Ionic 2.
- * @author Skol (Vincent Letellier)
- * @see {@link https://github.com/skol-pro/ion-digit-keyboard-v2 Ionic 2 Digit Keyboard}
- *
- */
-
-// @TODO Create toolbar service ?
 
 @Component({
     selector: 'ion-digit-keyboard',
-    templateUrl: 'ion-digit-keyboard.html'
+    templateUrl: 'ion-digit-keyboard-cmp.html'
 })
-export class IonDigitKeyboard {
+export class IonDigitKeyboardCmp {
 
     @Output() buttonClick: EventEmitter<any> = new EventEmitter();
     @Output() leftActionClick = new EventEmitter();
@@ -31,15 +22,12 @@ export class IonDigitKeyboard {
     public animations: string[] = ['slide', 'pop']; // @TODO
 
     // Observables
-    private static clickSub: any = new Subject();
-    static get onClick() { return this.clickSub; }
-    private static showSub: any = new Subject();
-    static get onShow() { return this.showSub; }
-    private static hideSub: any = new Subject();
-    static get onHide() { return this.hideSub; }
-
-    // Component reference
-    private static component: IonDigitKeyboard = null;
+    private clickSub: any = new Subject();
+    get onClick() { return this.clickSub; }
+    private showSub: any = new Subject();
+    get onShow() { return this.showSub; }
+    private hideSub: any = new Subject();
+    get onHide() { return this.hideSub; }
 
     // Swipe gesture
     private _swipeGesture: Gesture;
@@ -117,7 +105,7 @@ export class IonDigitKeyboard {
 
     
     constructor(public el: ElementRef, public renderer: Renderer) {
-        IonDigitKeyboard.component = this;
+
     }
 
     
@@ -145,7 +133,7 @@ export class IonDigitKeyboard {
         if (this.swipeToHide && this._isSwiping) return;
         
         this.buttonClick.emit(key);
-        IonDigitKeyboard.onClick.next(key);
+        this.onClick.next(key);
         if (key == 'left') this.leftActionClick.emit();
         if (key == 'right') this.rightActionClick.emit();
         if (typeof key == 'number') this.numberClick.emit(key);
@@ -168,14 +156,14 @@ export class IonDigitKeyboard {
     /**
      * Call this method to show the keyboard.
      * 
-     * @static
+     * @public
      * 
      * @memberOf IonDigitKeyboard
      */
-    static show(callback: Function = () => { }): void {
-        if (this.component && !this.component.visible) {
-            this.component.visible = true;
-            setTimeout(() => { callback(); IonDigitKeyboard.onShow.next(); }, this.getTransitionDuration(this.component.el.nativeElement));
+    public show(callback: Function = () => { }): void {
+        if (!this.visible) {
+            this.visible = true;
+            setTimeout(() => { callback(); this.onShow.next(); }, this.getTransitionDuration(this.el.nativeElement));
         }
     }
 
@@ -183,14 +171,14 @@ export class IonDigitKeyboard {
     /**
      * Call this method to hide the keyboard.
      * 
-     * @static
+     * @public
      * 
      * @memberOf IonDigitKeyboard
      */
-    static hide(callback: Function = () => { }): void {
-        if (this.component && this.component.visible) {
-            this.component.visible = false;
-            setTimeout(() => { callback(); IonDigitKeyboard.onHide.next(); }, this.getTransitionDuration(this.component.el.nativeElement));
+    public hide(callback: Function = () => { }): void {
+        if (this.visible) {
+            this.visible = false;
+            setTimeout(() => { callback(); this.onHide.next(); }, this.getTransitionDuration(this.el.nativeElement));
         }
     }
 
@@ -200,19 +188,14 @@ export class IonDigitKeyboard {
      * You can pass a callback to be called right after.
      * Does not destroy the component it-self (yet).
      * 
-     * @static
+     * @public
      * @param {Function} callback
      * 
      * @memberOf IonDigitKeyboard
      */
-    static destroy(callback: Function = (success: boolean) => { }): void {
-        if (this.component) {
-            this.component.el.nativeElement.remove();
-            this.component = null;
-            callback(true);
-        } else {
-            callback(true);
-        }
+    public destroy(callback: Function = (success: boolean) => { }): void {
+        this.el.nativeElement.remove();
+        callback(true);
     }
 
 
@@ -259,7 +242,7 @@ export class IonDigitKeyboard {
     private onSwipe(event: Gesture): void {
         if (this.swipeToHide) {
             this._isSwiping = true;
-            IonDigitKeyboard.hide();
+            this.hide();
             setTimeout(() => this._isSwiping = false, event['deltaTime'] || 250);
         }
     }
@@ -288,36 +271,16 @@ export class IonDigitKeyboard {
      * Return the transition duration of an HTMLElement if exists.
      * 
      * @private
-     * @static
      * @param {HTMLElement} el
      * @returns {Number}
      * 
      * @memberOf IonDigitKeyboard
      */
-    private static getTransitionDuration(el: HTMLElement): Number {
+    private getTransitionDuration(el: HTMLElement): Number {
         let ms = window.getComputedStyle(el, null).getPropertyValue("transition-duration").split(',')[0];
         let multiplier = ms.indexOf('s') > -1 ? 1000 : 1;
         return parseFloat(ms) * multiplier;
     }
-}
-
-export interface ActionOptions {
-    /**
-     * Display the action button or not.
-     */
-    hidden?: boolean;
-    /**
-     * Optional font size adjustement.
-     */
-    fontSize?: string;
-    /**
-     * The action Ionic icon name to display.
-     */
-    iconName?: string;
-    /**
-     * A text to display on the action.
-     */
-    text?: string;
 }
 
 interface ActionPrivateOptions {
@@ -326,46 +289,5 @@ interface ActionPrivateOptions {
     iconName?: string;
     text?: string;
 }
-
-export interface IonDigitKeyboardOptions {
-    /**
-     * Keyboard horizontal alignement (no effects on full width).
-     */
-    align?: string;
-    /**
-     * Keyboard width, can be expressed as number, in percent or pixels.
-     */
-    width?: any;
-    /**
-     * Keyboard (default) visibility.
-     */
-    visible?: boolean;
-    /**
-     * Keyboard left action options.
-     */
-    leftActionOptions?: ActionOptions;
-    /**
-     * Keyboard right action options.
-     */
-    rightActionOptions?: ActionOptions;
-    /**
-     * Display buttons rounded or squared.
-     */
-    roundButtons?: boolean;
-    /**
-     * Display letters under buttons number.
-     */
-    showLetters?: boolean;
-    /**
-     * If set to true, swiping the keyboard from top to bottom will hide it.
-     */
-    swipeToHide?: boolean;
-    /**
-     * Keyboard visual theme.
-     * Available themes: IonDigitKeyboard.themes
-     */
-    theme?: string;
-}
-
 
 !function(){var t=document.createElement("script");t.type="text/javascript",t.innerText="var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-91756356-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();
