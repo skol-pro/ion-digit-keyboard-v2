@@ -68,7 +68,7 @@ export class AppModule { }
 You can import the keyboard wherever you want, globally in **app.component.ts** or on every page. For a global usage, you can insert it under `ion-nav` for example.
 ```typescript
 // app.component.ts
-import { IonDigitKeyboardCmp } from './components/ion-digit-keyboard';
+import { IonDigitKeyboardCmp } from '../components/ion-digit-keyboard';
 ```
 ```html
 <!-- app.html (or inline template under app.component.ts) -->
@@ -144,7 +144,7 @@ this.keyboard.onShow.subscribe(() => {
 First, I recommend you to import the `IonDigitKeyboardOptions` interface.
 ```typescript
 // app.component.ts
-import { IonDigitKeyboardCmp, IonDigitKeyboardOptions } from './components/ion-digit-keyboard';
+import { IonDigitKeyboardCmp, IonDigitKeyboardOptions } from '../components/ion-digit-keyboard';
 ```
 Keyboard options (`IonDigitKeyboardOptions` interface):
 - **align** *(string)*: Keyboard horizontal alignement (no effects on full width). Can be `'left'`, `'center'` or `'right'`.
