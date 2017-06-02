@@ -10,11 +10,15 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from 'ionic-angular';
 import { IonDigitKeyboardCmp } from './components';
 
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [
+        CommonModule,
+        IonicModule
+    ],
     declarations: [
         IonDigitKeyboardCmp
     ],
