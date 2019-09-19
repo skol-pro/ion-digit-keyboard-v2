@@ -113,7 +113,7 @@ Here are the public component methods (`this.keyboard.show(myCallback)`):
 And here are the available events (`(buttonClick)="btnClickFunction($event)"`):
 - **buttonClick**: Any button clicked
 - **leftActionClick**: Left action clicked
-- **rightActionClick**: Left action clicked
+- **rightActionClick**: Right action clicked
 - **numberClick**: Number key clicked
 
 
